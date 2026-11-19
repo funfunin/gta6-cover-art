@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Vice Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>NEON <span class="neon">VICE</span> COVER STUDIO</h1>
+  <p>Turn your photo and a caption into poster-style cover art. Everything runs offline, in your browser.</p>
+</header>
+<main>
+  <div class="controls">
+    <section>
+      <h2>Photo</h2>
+      <label class="file-btn" for="fileInput">Add your own photo…</label>
+      <input type="file" id="fileInput" accept="image/*" hidden>
+      <label>Sample photos (click to put in the selected panel)</label>
+      <div class="samples" id="samples"></div>
+      <div class="row" style="margin-top:10px">
+        <button id="fillAll" type="button">Fill every panel with one photo</button>
+      </div>
+      <label for="zoomSlider">Zoom selected panel</label>
+      <input type="range" id="zoomSlider" min="1" max="3" step="0.01" value="1">
+    </section>
+    <section>
+      <h2>Layout</h2>
+      <div class="layout-grid" id="layouts"></div>
+    </section>
+    <section>
+      <h2>Colour grade</h2>
+      <div class="grade-row" id="grades"></div>
+    </section>
+    <section>
+      <h2>Lettering</h2>
+      <label for="titleInput">Title</label>
+      <input type="text" id="titleInput" value="VICE CITY" maxlength="24">
+      <label for="subtitleInput">Subtitle</label>
+      <input type="text" id="subtitleInput" value="neon nights" maxlength="40">
+      <label for="badgeInput">Badge text</label>
+      <input type="text" id="badgeInput" value="NEW" maxlength="8">
+    </section>
+    <section>
+      <h2>History</h2>
+      <div class="row">
+        <button id="undoBtn" type="button">Undo</button>
+        <button id="redoBtn" type="button">Redo</button>
+      </div>
+    </section>
+    <section>
+      <h2>Export PNG</h2>
+      <div class="size-row">
+        <span>Size:</span>
+        <button type="button" class="size-btn active" data-w="1080" data-h="1080">Square 1080×1080</button>
+        <button type="button" class="size-btn" data-w="1080" data-h="1350">Portrait 1080×1350</button>
+        <button type="button" class="size-btn" data-w="1920" data-h="1080">Wide 1920×1080</button>
+      </div>
+      <div style="margin-top:10px">
+        <button id="exportBtn" class="primary" type="button">Export PNG</button>
+      </div>
+    </section>
+  </div>
+  <div class="preview-wrap">
+    <canvas id="preview" width="900" height="900"></canvas>
+    <p class="hint">Click a panel to select it. Drag inside a panel to move its photo, scroll or use the zoom slider to zoom. Double-click a panel to change its photo.</p>
+  </div>
+</main>
+<canvas id="shotCanvas"></canvas>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
